@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+      android:title="Research"
+      android:enabled="true"
+      android:icon="@drawable/biotech"
+      android:id="@+id/researchFragment" />
+
+    <item
+        android:title="Blog"
+        android:enabled="true"
+        android:icon="@drawable/rss_feed"
+        android:id="@+id/blogFragment" />
+
+    <item
+        android:title="Create Blog"
+        android:icon="@drawable/addblog"
+        android:enabled="true"
+        android:id="@+id/createBlogFragment" />
+</menu>
