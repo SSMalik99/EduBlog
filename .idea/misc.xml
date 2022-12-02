@@ -8,11 +8,13 @@
         <entry key="app/src/main/res/drawable/biotech-48px.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/rss_feed-48px.xml" value="0.1175" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.26598358154296875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create_blog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_research.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_show.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_update_blog.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.1" />
       </map>
