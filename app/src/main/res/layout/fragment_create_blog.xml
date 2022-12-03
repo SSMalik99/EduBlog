@@ -1,71 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CreateBlogFragment"
-    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
     >
-    <LinearLayout
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:textSize="30dp"
+        android:text="Create Blog"
+        />
 
-        <TextView
+    <androidx.cardview.widget.CardView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+        <EditText
+            android:id="@+id/blogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Blog Title..."
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/blogContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter content..."
+
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/blogAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter author name..."
+            android:inputType="text" />
+
+            <TextView
+                android:id="@+id/errorMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="singh"
+                android:textColor="#EC1A1A" />
+
+        <Button
+            android:id="@+id/saveBlog"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="30dp"
-            android:text="Create Blog" />
+            android:ems="10"
+            android:text="Create" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/blogtitle"
-        android:layout_width="242dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="110dp"
-        android:ems="10"
-        android:hint="Blog Title"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/blogcontent"
-        android:layout_width="238dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/blogtitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="210dp"
-        android:ems="10"
-        android:hint="Content Name"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/blogauthor"
-        android:layout_width="238dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/blogcontent"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="310dp"
-        android:ems="10"
-        android:hint="Author Name"
-        android:inputType="text" />
-
-    <Button
-        android:id="@+id/create_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="440dp"
-        android:ems="10"
-        android:text="Create" />
+    </androidx.cardview.widget.CardView>
 
 
 </FrameLayout>

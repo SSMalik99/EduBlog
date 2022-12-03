@@ -3,7 +3,8 @@ package com.example.edublog.helpers
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-
+import androidx.core.content.contentValuesOf
+import java.util.*
 
 
 class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
@@ -18,7 +19,22 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        // do nothing
+        db?.execSQL("CREATE TABLE blogs(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, author TEXT, date TEXT );")
+    }
+
+    fun createBlog( title: String, content: String, author: String ): Boolean {
+
+        val sqliteDatabase = this.writableDatabase
+
+        val values = contentValuesOf().apply {
+            put("title", title)
+            put("content", content)
+            put("author", author)
+            put("date", Date().toString())
+        }
+
+        val newRowId = sqliteDatabase.insert("blogs",null, values)
+        return newRowId.toInt() != -1
     }
 
 
@@ -67,6 +83,7 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
 //    }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db?.execSQL("DROP table blogs;")
     }
 
 
