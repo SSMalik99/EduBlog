@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="updateBlogText">Update Blog</string>
+    <string name="updateBlogText">Edit Blog</string>
     <string name="deleteBlogText">Delete Blog</string>
 </resources>

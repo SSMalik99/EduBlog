@@ -1,11 +1,7 @@
 package com.example.edublog.fragments
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.DialogInterface
-import android.graphics.Color
+
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.edublog.R
-import com.example.edublog.databinding.ActivityMainBinding
 import com.example.edublog.helpers.DataBaseHelper
-import com.example.edublog.models.BlogModel
-import jp.wasabeef.richeditor.RichEditor
+
 
 class CreateBlogFragment : Fragment() {
 
@@ -30,13 +24,9 @@ class CreateBlogFragment : Fragment() {
     private lateinit var errorMessageView: TextView
     private lateinit var errorMessge: String
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_blog, container, false)
-
         dateBase = DataBaseHelper(view.context)
 
         blogTitle = view.findViewById<EditText>(R.id.blogTitle)

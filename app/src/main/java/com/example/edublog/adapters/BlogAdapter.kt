@@ -33,8 +33,8 @@ class BlogAdapter(val context: Context, val blogs : ArrayList<BlogModel>)
         val content = blog.content
 
 
-        (if (content.length > 300) {
-            content.substring(0, 300) + "..."
+        (if (content.length > 50) {
+            content.substring(0, 50) + "..."
         } else {
             content
         }).also { holder.blogContent.text = it }

@@ -83,50 +83,20 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
         return  blog
     }
 
+    fun updateBlog(blogId:Int, title: String, content: String, author: String) : Boolean{
+        val sqliteDatabase = this.writableDatabase
 
-//    fun singleCompany(companyId : Int) : CompanyModel {
-//        val sqliteDatbase = this.writableDatabase
-//        val cursor = sqliteDatbase.rawQuery("SELECT * FROM companies where ID= $companyId", null)
-//        cursor.moveToFirst()
-//
-//        val model = CompanyModel(
-//            cursor.getInt(0),
-//            cursor.getString(1),
-//            cursor.getString(2),
-//            cursor.getString(3)
-//        )
-//        cursor.close()
-//        return model
-//
-//
-//
-//    }
+        val values = contentValuesOf().apply {
+            put("title", title)
+            put("content", content)
+            put("author", author)
+        }
+        val result = sqliteDatabase.update("blogs", values, "id=$blogId",null)
 
+        return result >= 1
 
-//    fun singleTutorial(tutorialId : Int) : TutorialModel {
-//        val sqLiteDatabase = this.readableDatabase
-//
-//        val query = "SELECT * FROM tutorials where ID=$tutorialId"
-//
-//        val cursor = try {
-//            sqLiteDatabase.rawQuery(query, null)
-//        }catch (e:Exception) {
-//            arrangeDatabase(sqLiteDatabase)
-//            sqLiteDatabase.rawQuery(query, null)
-//        }
-//        cursor.moveToFirst()
-//        val tutorial = TutorialModel(
-//            cursor.getInt(0),
-//            cursor.getString(1),
-//            cursor.getString(2),
-//            cursor.getString(3),
-//            cursor.getInt(4) == 1,
-//            cursor.getInt(5),
-//        )
-//        cursor.close()
-//
-//        return tutorial
-//    }
+    }
+
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP table blogs;")

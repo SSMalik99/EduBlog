@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
+
+import androidx.navigation.findNavController
 import com.example.edublog.R
 import com.example.edublog.helpers.DataBaseHelper
-import org.w3c.dom.Text
-import kotlin.properties.Delegates
+
 
 class ShowFragment : Fragment() {
 
-    var blogId = 0
-    lateinit var database : DataBaseHelper
+    private var blogId = 0
+    private lateinit var database : DataBaseHelper
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         blogId = arguments?.getInt("blogId") ?: 0
@@ -28,6 +31,7 @@ class ShowFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_show, container, false)
 
+
         database = DataBaseHelper(view.context)
         val blog = database.singleBlog(blogId)
 
@@ -36,7 +40,11 @@ class ShowFragment : Fragment() {
         view.findViewById<TextView>(R.id.showBlogAuthor).text = blog.author
         view.findViewById<TextView>(R.id.showBlogDate).text = blog.date
 
-        return view;
+        view.findViewById<AppCompatButton>(R.id.updateBlogButton).setOnClickListener{
+            view.findNavController().navigate(ShowFragmentDirections.actionShowFragmentToUpdateBlogFragment(blogId))
+
+        }
+        return view
     }
 
 }

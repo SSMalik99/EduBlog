@@ -9,15 +9,7 @@
         android:name="com.example.edublog.fragments.BlogFragment"
         android:label="Your Blogs"
         tools:layout="@layout/fragment_blog" >
-        <action
-            android:id="@+id/action_blogFragment_to_updateBlogFragment"
-            app:destination="@id/updateBlogFragment" >
-            <argument
-                app:argType="integer"
-                android:name="blogId"
-                android:defaultValue="0"
-                />
-        </action>
+
         <action
             android:id="@+id/action_blogFragment_to_showFragment"
             app:destination="@id/showFragment" >
@@ -42,7 +34,7 @@
     <fragment
         android:id="@+id/researchFragment"
         android:name="com.example.edublog.fragments.ResearchFragment"
-        android:label="fragment_research"
+        android:label="New Inventions"
         tools:layout="@layout/fragment_research" />
 
 
@@ -50,7 +42,18 @@
         android:id="@+id/showFragment"
         android:name="com.example.edublog.fragments.ShowFragment"
         android:label="Show Blog"
-        tools:layout="@layout/fragment_show" />
+        tools:layout="@layout/fragment_show" >
+
+        <action
+            android:id="@+id/action_showFragment_to_updateBlogFragment"
+            app:destination="@id/updateBlogFragment">
+            <argument
+                app:argType="integer"
+                android:name="blogId"
+                android:defaultValue="0"
+                />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/updateBlogFragment"
