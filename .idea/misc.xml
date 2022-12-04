@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_research.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_show.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_update_blog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/single_article_card.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/single_blog_card.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.1" />

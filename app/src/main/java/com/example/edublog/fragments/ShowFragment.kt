@@ -22,7 +22,8 @@ class ShowFragment : Fragment() {
     private var blogId = 0
     private lateinit var database : DataBaseHelper
 
-    private lateinit var binding:FragmentShowBinding
+    private var _binding:FragmentShowBinding? = null
+    private val binding get() = _binding!!
     override fun onAttach(context: Context) {
         super.onAttach(context)
         blogId = arguments?.getInt("blogId") ?: 0
@@ -35,7 +36,7 @@ class ShowFragment : Fragment() {
         // Inflate the layout for this fragment
 //        val view = inflater.inflate(R.layout.fragment_show, container, false)
 
-        binding = FragmentShowBinding.inflate(layoutInflater)
+        _binding = FragmentShowBinding.inflate(layoutInflater, container, false)
         val view = binding.root
 //        FragmentShowBinding.bind(view)
 
@@ -76,6 +77,11 @@ class ShowFragment : Fragment() {
 
         }
         return view
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
