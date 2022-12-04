@@ -97,6 +97,12 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
 
     }
 
+    fun deleteBlog(blogId: Int) : Boolean{
+        val sqliteDatabase = this.writableDatabase
+        return sqliteDatabase.delete("blogs", "id=$blogId", null) >= 1
+
+    }
+
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP table blogs;")

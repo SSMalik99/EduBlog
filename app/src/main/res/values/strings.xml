@@ -1,7 +1,21 @@
 <resources>
     <string name="app_name">EduBlog</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="updateBlogText">Edit Blog</string>
     <string name="deleteBlogText">Delete Blog</string>
+    <string-array name="news_categories">
+        <item>all</item>
+        <item>business</item>
+        <item>sports</item>
+        <item>world</item>
+        <item>politics</item>
+        <item>technology</item>
+        <item>startup</item>
+        <item>entertainment</item>
+        <item>miscellaneous</item>
+        <item>hatke</item>
+        <item>science</item>
+        <item>automobile</item>
+    </string-array>
 </resources>

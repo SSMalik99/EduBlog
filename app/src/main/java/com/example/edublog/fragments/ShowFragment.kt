@@ -1,5 +1,6 @@
 package com.example.edublog.fragments
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 
 import androidx.navigation.findNavController
@@ -42,6 +44,28 @@ class ShowFragment : Fragment() {
 
         view.findViewById<AppCompatButton>(R.id.updateBlogButton).setOnClickListener{
             view.findNavController().navigate(ShowFragmentDirections.actionShowFragmentToUpdateBlogFragment(blogId))
+
+        }
+
+        view.findViewById<AppCompatButton>(R.id.updateDeleteButton).setOnClickListener {
+
+            val builder = AlertDialog.Builder(view.context)
+            builder.setMessage("Are you sure you want to Delete?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { _, _ ->
+                    // Delete selected note from database
+                    if (database.deleteBlog(blogId)){
+                        view.findNavController().popBackStack()
+                    }else{
+                        Toast.makeText(view.context, "Some error occured, please try later!", Toast.LENGTH_LONG).show()
+                    }
+                }
+                .setNegativeButton("No") { dialog, id ->
+                    // Dismiss the dialog
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
 
         }
         return view
