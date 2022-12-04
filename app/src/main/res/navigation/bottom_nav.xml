@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/blogFragment"
         android:name="com.example.edublog.fragments.BlogFragment"
-        android:label="fragment_blog"
+        android:label="Your Blogs"
         tools:layout="@layout/fragment_blog" >
         <action
             android:id="@+id/action_blogFragment_to_updateBlogFragment"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/createBlogFragment"
         android:name="com.example.edublog.fragments.CreateBlogFragment"
-        android:label="fragment_create_blog"
+        android:label="Create Blog"
         tools:layout="@layout/fragment_create_blog" >
         <action
             android:id="@+id/action_createBlogFragment_to_blogFragment"
@@ -49,12 +49,12 @@
     <fragment
         android:id="@+id/showFragment"
         android:name="com.example.edublog.fragments.ShowFragment"
-        android:label="fragment_show"
+        android:label="Show Blog"
         tools:layout="@layout/fragment_show" />
 
     <fragment
         android:id="@+id/updateBlogFragment"
         android:name="com.example.edublog.fragments.UpdateBlogFragment"
-        android:label="fragment_update_blog"
+        android:label="Update Blog"
         tools:layout="@layout/fragment_update_blog" />
 </navigation>

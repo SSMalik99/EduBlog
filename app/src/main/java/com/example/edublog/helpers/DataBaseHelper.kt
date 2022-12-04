@@ -64,6 +64,25 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
         return  blogs
     }
 
+    fun singleBlog(blogId : Int) : BlogModel{
+        val sqliteDatabase = this.readableDatabase
+        var cursor = sqliteDatabase.rawQuery("Select * from blogs where id=$blogId", null)
+        val blogs = ArrayList<BlogModel>()
+
+        cursor.moveToFirst()
+
+        val blog = BlogModel(cursor.getInt(0),
+            cursor.getString(1),
+            cursor.getString(2),
+            cursor.getString(3),
+            (cursor.getString(4))
+        )
+
+        cursor.close()
+
+        return  blog
+    }
+
 
 //    fun singleCompany(companyId : Int) : CompanyModel {
 //        val sqliteDatbase = this.writableDatabase

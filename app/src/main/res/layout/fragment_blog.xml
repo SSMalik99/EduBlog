@@ -9,6 +9,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/listBlogViewRecycler"
+            android:layout_marginBottom="30dp"
             />
+
+        <TextView
+            android:id="@+id/emptyListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Nothing is available to show"
+            android:visibility="gone"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
 
 </FrameLayout>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.edublog.R
@@ -24,13 +25,21 @@ class BlogFragment : Fragment() {
 
         database = DataBaseHelper(view.context)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.listBlogViewRecycler)
-        recyclerView.layoutManager = LinearLayoutManager(view.context)
-
         val blogs = database.allBlogs()
 
-        val blogAdapter = BlogAdapter(view.context, blogs)
-        recyclerView.adapter = blogAdapter
+        if (blogs.size < 1){
+            val hiddenText = view.findViewById<TextView>(R.id.emptyListView)
+            hiddenText.visibility=View.VISIBLE
+            hiddenText.text = "You haven't created any blog, Start Publishing Your educational blogs."
+
+        }else{
+            val recyclerView = view.findViewById<RecyclerView>(R.id.listBlogViewRecycler)
+            recyclerView.layoutManager = LinearLayoutManager(view.context)
+            val blogAdapter = BlogAdapter(view.context, blogs)
+            recyclerView.adapter = blogAdapter
+
+        }
+
 
         return view
     }

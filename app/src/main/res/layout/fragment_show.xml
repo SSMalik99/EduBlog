@@ -5,10 +5,85 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ShowFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showBlogTitle"
+            android:text="Singh"
+            android:textSize="32dp"
+            android:textStyle="bold"
+             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showBlogContent"
+            android:text="singh is king\nsgfsdf"
+            android:textSize="20dp"
+            android:lineHeight="20dp"
+            android:textColor="@color/black"
+            android:padding="20dp"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/showBlogAuthor"
+                android:textSize="20dp"
+                android:lineHeight="20dp"
+                android:textColor="@color/black"
+                android:gravity="end"
+                />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showBlogDate"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:padding="20dp"
+            />
+
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                >
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:id="@+id/updateBlogButton"
+                    android:background="@color/success"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="@color/white"
+                    android:text="@string/updateBlogText" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/updateDeleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:background="@color/danger"
+                    android:paddingHorizontal="15dp"
+                    android:text="@string/deleteBlogText"
+                    android:textColor="#3E2723" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

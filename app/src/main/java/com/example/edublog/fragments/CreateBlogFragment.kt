@@ -71,13 +71,13 @@ class CreateBlogFragment : Fragment() {
 
     private  fun validateInputs(): Boolean{
         var error = false
-        if (blogTitle.text.toString() == ""){
+        if (blogTitle.text.toString().trim() == ""){
             errorMessge = "Blog Title is Required"
             error = true
-        }else if (blogContent.text.toString() == ""){
+        }else if (blogContent.text.toString().trim() == ""){
             errorMessge = "Blog Content is Required"
             error = true
-        }else if (blogAuthor.text.toString() == "") {
+        }else if (blogAuthor.text.toString().trim() == "") {
             errorMessge = "Blog Author Name is Required"
             error = true
         }
