@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/researchFragment"
         android:name="com.example.edublog.fragments.ResearchFragment"
-        android:label="New Inventions"
+        android:label="Latest News Articles"
         tools:layout="@layout/fragment_research" />
 
 
