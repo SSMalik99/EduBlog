@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatButton
 
 import androidx.navigation.findNavController
 import com.example.edublog.R
+import com.example.edublog.databinding.FragmentShowBinding
 import com.example.edublog.helpers.DataBaseHelper
 
 
@@ -21,6 +22,7 @@ class ShowFragment : Fragment() {
     private var blogId = 0
     private lateinit var database : DataBaseHelper
 
+    private lateinit var binding:FragmentShowBinding
     override fun onAttach(context: Context) {
         super.onAttach(context)
         blogId = arguments?.getInt("blogId") ?: 0
@@ -31,23 +33,28 @@ class ShowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_show, container, false)
+//        val view = inflater.inflate(R.layout.fragment_show, container, false)
 
+        binding = FragmentShowBinding.inflate(layoutInflater)
+        val view = binding.root
+//        FragmentShowBinding.bind(view)
 
         database = DataBaseHelper(view.context)
+
         val blog = database.singleBlog(blogId)
 
-        view.findViewById<TextView>(R.id.showBlogTitle).text = blog.title
-        view.findViewById<TextView>(R.id.showBlogContent).text = blog.content
-        view.findViewById<TextView>(R.id.showBlogAuthor).text = blog.author
-        view.findViewById<TextView>(R.id.showBlogDate).text = blog.date
+        binding.showBlogTitle.text = blog.title
+        binding.showBlogContent.text = blog.content
+        binding.showBlogAuthor.text = blog.author
+        binding.showBlogDate.text = blog.date
 
-        view.findViewById<AppCompatButton>(R.id.updateBlogButton).setOnClickListener{
+        binding.updateBlogButton.setOnClickListener{
             view.findNavController().navigate(ShowFragmentDirections.actionShowFragmentToUpdateBlogFragment(blogId))
 
         }
 
-        view.findViewById<AppCompatButton>(R.id.updateDeleteButton).setOnClickListener {
+
+        binding.updateDeleteButton.setOnClickListener {
 
             val builder = AlertDialog.Builder(view.context)
             builder.setMessage("Are you sure you want to Delete?")
