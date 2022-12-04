@@ -57,7 +57,8 @@
                 android:id="@+id/errorMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="singh"
+                android:text=""
+                android:visibility="gone"
                 android:textColor="#EC1A1A" />
 
         <Button

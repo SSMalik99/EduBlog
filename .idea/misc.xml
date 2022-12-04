@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/add_circle-48px.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1175" />
+        <entry key="app/src/main/res/drawable/arrow_right.xml" value="0.173" />
         <entry key="app/src/main/res/drawable/biotech-48px.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/rss_feed-48px.xml" value="0.1175" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/layout/fragment_research.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_show.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_update_blog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/single_blog_card.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.1" />
       </map>

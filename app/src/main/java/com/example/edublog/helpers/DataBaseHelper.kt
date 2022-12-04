@@ -4,7 +4,12 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import com.example.edublog.models.BlogModel
+import java.text.SimpleDateFormat
+import java.time.Clock
+import java.time.LocalDateTime
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
@@ -26,15 +31,37 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
 
         val sqliteDatabase = this.writableDatabase
 
+        val time = Calendar.getInstance().time
+        val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        val current = formatter.format(time)
+
         val values = contentValuesOf().apply {
             put("title", title)
             put("content", content)
             put("author", author)
-            put("date", Date().toString())
+            put("date", current)
         }
 
         val newRowId = sqliteDatabase.insert("blogs",null, values)
         return newRowId.toInt() != -1
+    }
+
+    fun allBlogs() : ArrayList<BlogModel> {
+        val sqliteDatabase = this.readableDatabase
+        var cursor = sqliteDatabase.rawQuery("Select * from blogs", null)
+        val blogs = ArrayList<BlogModel>()
+
+        while (cursor.moveToNext()) {
+            val model = BlogModel(cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                (cursor.getString(4))
+            )
+
+            blogs.add(model)
+        }
+        return  blogs
     }
 
 

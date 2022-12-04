@@ -13,7 +13,7 @@
             android:id="@+id/action_blogFragment_to_updateBlogFragment"
             app:destination="@id/updateBlogFragment" >
             <argument
-                app:argType="string"
+                app:argType="integer"
                 android:name="blogId"
                 android:defaultValue="0"
                 />
@@ -22,7 +22,7 @@
             android:id="@+id/action_blogFragment_to_showFragment"
             app:destination="@id/showFragment" >
             <argument
-                app:argType="string"
+                app:argType="integer"
                 android:name="blogId"
                 android:defaultValue="0"
                 />

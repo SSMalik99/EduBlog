@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.edublog.R
+import com.example.edublog.helpers.DataBaseHelper
 
 class ResearchFragment : Fragment() {
 
@@ -14,7 +15,10 @@ class ResearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_research, container, false)
+        val view = inflater.inflate(R.layout.fragment_research, container, false)
+
+
+         return view
     }
 
 }

@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.edublog.R
 import com.example.edublog.databinding.ActivityMainBinding
 import com.example.edublog.helpers.DataBaseHelper
@@ -22,13 +23,12 @@ import jp.wasabeef.richeditor.RichEditor
 
 class CreateBlogFragment : Fragment() {
 
-    private lateinit var binding: ActivityMainBinding
     private lateinit var dateBase: DataBaseHelper
-
     private lateinit var blogTitle: EditText
     private lateinit var blogContent: EditText
     private lateinit var blogAuthor : EditText
     private lateinit var errorMessageView: TextView
+    private lateinit var errorMessge: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,15 +42,27 @@ class CreateBlogFragment : Fragment() {
         blogTitle = view.findViewById<EditText>(R.id.blogTitle)
         blogContent = view.findViewById<EditText>(R.id.blogContent)
         blogAuthor = view.findViewById<EditText>(R.id.blogAuthor)
-//        errorMessageView = view.findViewById(R.id.errorMessage)
+        errorMessageView = view.findViewById(R.id.errorMessage)
 
         view.findViewById<Button>(R.id.saveBlog).setOnClickListener{
+            errorMessageView.visibility = View.GONE
             if(!validateInputs()){
-
+                errorMessageView.text = errorMessge
+                errorMessageView.visibility = View.VISIBLE
             }else{
-                Log.i("blog", blogContent.text.toString()+ "---"+ blogTitle.text.toString() + "===" + blogAuthor.text.toString() )
-            }
+                val result = dateBase.createBlog(
+                    title = blogTitle.text.toString(),
+                    content = blogContent.text.toString(),
+                    author = blogAuthor.text.toString()
+                )
 
+                if (result) {
+                    view.findNavController().navigate(R.id.action_createBlogFragment_to_blogFragment)
+                }else{
+                    errorMessageView.text = "Something went wrong, plese try later!"
+                    errorMessageView.visibility = View.VISIBLE
+                }
+            }
 
         }
 
@@ -58,25 +70,20 @@ class CreateBlogFragment : Fragment() {
     }
 
     private  fun validateInputs(): Boolean{
-
-
         var error = false
-        var errorMessage = ""
-
-
         if (blogTitle.text.toString() == ""){
-            errorMessage = "Blog Title is Required"
+            errorMessge = "Blog Title is Required"
             error = true
         }else if (blogContent.text.toString() == ""){
-            errorMessage = "Blog Content is Required"
+            errorMessge = "Blog Content is Required"
             error = true
         }else if (blogAuthor.text.toString() == "") {
-            errorMessage = "Blog Author Name is Required"
+            errorMessge = "Blog Author Name is Required"
             error = true
         }
 
         if (error){
-            Toast.makeText(this.view?.context, errorMessage, Toast.LENGTH_LONG).show()
+            Toast.makeText(this.view?.context, errorMessge, Toast.LENGTH_LONG).show()
 //            errorMessageView.text = errorMessage
 
             return false
