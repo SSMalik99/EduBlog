@@ -79,7 +79,6 @@ class DataBaseHelper ( val context: Context): SQLiteOpenHelper(context,
         )
 
         cursor.close()
-
         return  blog
     }
 

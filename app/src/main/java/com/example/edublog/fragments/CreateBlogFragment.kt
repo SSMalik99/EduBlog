@@ -13,14 +13,22 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.edublog.R
 import com.example.edublog.helpers.DataBaseHelper
+import com.mobsandgeeks.saripaar.annotation.*
 
 
 class CreateBlogFragment : Fragment() {
 
     private lateinit var dateBase: DataBaseHelper
+
+    @NotEmpty
     private lateinit var blogTitle: EditText
+
+    @NotEmpty
     private lateinit var blogContent: EditText
+
+    @NotEmpty
     private lateinit var blogAuthor : EditText
+
     private lateinit var errorMessageView: TextView
     private lateinit var errorMessge: String
 

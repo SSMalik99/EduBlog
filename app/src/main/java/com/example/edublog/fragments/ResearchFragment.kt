@@ -26,8 +26,11 @@ class ResearchFragment : Fragment() {
 
     private var _binding:FragmentResearchBinding? = null
     private val binding get() = _binding!!
-    val baseUrl = "https://inshorts.deta.dev/news"
+    val baseUrl = "https://inshorts.deta.dev/news" // api to get latest news articles
     var articles = ArrayList<ArticleModel>()
+
+
+
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentResearchBinding.inflate(layoutInflater, container, false)
@@ -79,52 +82,33 @@ class ResearchFragment : Fragment() {
 
 
     private fun getArticles(category:String, adapter: ArticleAdapter) {
+
         val client = AsyncHttpClient()
         val params = RequestParams()
         articles = ArrayList<ArticleModel>()
 //        params["limit"] = "5"
 //        params["category"] = category
 
-
-
         client["$baseUrl?category=$category", params, object :
             JsonHttpResponseHandler() {
-
             override fun onSuccess(statusCode: Int, headers: Headers, json: JSON) {
                 // Access a JSON array response with `json.jsonArray`
-
                 Log.i("data in apid", json.jsonObject.get("data").toString())
                 val data = json?.jsonObject.get("data") as JSONArray
 
                 for (i in 0 until data.length()){
                     val jsonObject = data.getJSONObject(i) as JSONObject
-                    articles.add(ArticleModel(
-                        author = jsonObject.getString("author"),
-                        content = jsonObject.getString("content"),
-                        date = jsonObject.getString("date"),
-                        imageUrl = jsonObject.getString("imageUrl"),
-                        readMoreUrl = jsonObject.getString("readMoreUrl"),
-                        time = jsonObject.getString("time"),
-                        title = jsonObject.getString("title"),
-                        url = jsonObject.getString("url"))
-                    )
+                    articles.add(ArticleModel(author = jsonObject.getString("author"), content = jsonObject.getString("content"), date = jsonObject.getString("date"), imageUrl = jsonObject.getString("imageUrl"), readMoreUrl = jsonObject.getString("readMoreUrl"), time = jsonObject.getString("time"), title = jsonObject.getString("title"), url = jsonObject.getString("url")
+                    ))
                 }
                 val articleAdapter =  ArticleAdapter(view?.context as Context, articles)
                 binding.newsRecyclerView.adapter = articleAdapter
-
                 if (adapter!= null){
                     articleAdapter.notifyDataSetChanged()
                 }
-
-
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Headers?,
-                response: String,
-                throwable: Throwable?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Headers?, response: String, throwable: Throwable?) {
                 Log.e("error", response)
             }
         }]
